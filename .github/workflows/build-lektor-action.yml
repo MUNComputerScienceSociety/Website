@@ -1,0 +1,23 @@
+name: Build Lektor Action
+on:
+  push:
+    paths:
+      - 'lektor-build-action/**'
+jobs:
+  build:
+    name: Build Lektor Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build Lektor action image
+        run: docker build -t docker.pkg.github.com/MUNComputerScienceSociety/website/lektor-build-action:latest ./lektor-build-action
+
+      - name: Push Lektor action image
+        run: |
+          docker login docker.pkg.github.com -u MUNCSSBot -p "${GH_PAT}"
+          docker push docker.pkg.github.com/MUNComputerScienceSociety/website/lektor-build-action:latest
+        env:
+          GH_PAT: ${{ secrets.GH_PACKAGE_PAT }}
+        if: github.ref == 'refs/heads/master'
+  
