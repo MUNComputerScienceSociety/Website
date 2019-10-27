@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Build Lektor action image
-        run: docker build -t docker.pkg.github.com/MUNComputerScienceSociety/website/lektor-build-action:latest ./lektor-build-action
+        run: docker build -t docker.pkg.github.com/muncomputersciencesociety/website/lektor-build-action:latest ./lektor-build-action
 
       - name: Push Lektor action image
         run: |
           docker login docker.pkg.github.com -u MUNCSSBot -p "${GH_PAT}"
-          docker push docker.pkg.github.com/MUNComputerScienceSociety/website/lektor-build-action:latest
+          docker push docker.pkg.github.com/muncomputersciencesociety/website/lektor-build-action:latest
         env:
           GH_PAT: ${{ secrets.GH_PACKAGE_PAT }}
         if: github.ref == 'refs/heads/master'
