@@ -5,4 +5,4 @@ runs:
   image: 'Dockerfile'
 branding:
   icon: 'hard-drive'
-  color: 'orange'
+  color: 'green'

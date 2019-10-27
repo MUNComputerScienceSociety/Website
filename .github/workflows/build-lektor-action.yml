@@ -19,5 +19,5 @@ jobs:
           docker push docker.pkg.github.com/muncomputersciencesociety/website/lektor-build-action:latest
         env:
           GH_PAT: ${{ secrets.GH_PACKAGE_PAT }}
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/optimize-build'
   
