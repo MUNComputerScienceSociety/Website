@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Build Lektor Content
-        uses: docket://docker.pkg.github.com/muncomputersciencesociety/website/lektor-build-action:latest
+        uses: docker://docker.pkg.github.com/muncomputersciencesociety/website/lektor-build-action:latest
         id: build
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v2.5.0
